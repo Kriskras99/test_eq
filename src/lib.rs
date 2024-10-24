@@ -3,10 +3,14 @@
 use std::fmt::{Debug, Display, Formatter};
 
 mod macros;
-#[doc(inline)]
-pub use macros::*;
 
-/// The error returned when a test in one of the macros fails.
+/// An error returned when a test in one of the macros fails.
+///
+/// The error message will display the expected value and the actual value. If the input was not
+/// a literal it will also show the variable name.
+///
+/// When the `line-info` feature is enabled, the error message will show the source file, line and column
+/// of the failed test.
 pub struct TestFailure {
     /// The failure message.
     error: String,

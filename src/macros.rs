@@ -1,11 +1,17 @@
-//! The implementations of the macros.
+//! # Macro implementations
+//! These macros are directly based on the macros in the standard library.
+//! This includes tricks like the reborrow to save a stack slot.
+
+// import TestFailure so we can reference it in the docs
+#[cfg(doc)]
+use super::TestFailure;
 
 /// Tests that two expressions are equal to each other (using [`PartialEq`]).
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -188,10 +194,10 @@ macro_rules! test_eq {
 
 /// Tests that two expressions are not equal to each other (using [`PartialEq`]).
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -374,13 +380,13 @@ macro_rules! test_ne {
 
 /// Tests that the left expression is any of the values in the right expression.
 ///
-/// The right expression can be anything that results in an item that has a `.contains()` function.
-/// For example, slices, [`Vec`]s, ranges, ...
+/// The right expression can be anything with a `.contains(&T)` function.
+/// For example, [`slice`], [`Vec`], [`range`][std::ops::Range], ….
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -559,12 +565,15 @@ macro_rules! test_any {
     }};
 }
 
-/// Tests that the expression is not any of the values in the slice (using `.contains()` on the right expression).
+/// Tests that the expression is not any of the values in the right expression.
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// The right expression can be anything with a `.contains(&T)` function.
+/// For example, [`slice`], [`Vec`], [`range`][std::ops::Range], ….
+///
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -746,10 +755,10 @@ macro_rules! test_not_any {
 
 /// Tests that the left expression is smaller or equal to the right expression (using [`PartialOrd`]).
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -932,10 +941,10 @@ macro_rules! test_le {
 
 /// Tests that the left expression is greater or equal to the right expression (using [`PartialOrd`]).
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -1118,10 +1127,13 @@ macro_rules! test_ge {
 
 /// Tests that both tests pass.
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// As input this takes two expressions that resolve to the type [`Result`]`<(), `[`TestFailure`]`>`.
+/// This means this type is composable with itself, and all the other `test_*!` macros.
+///
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -1160,10 +1172,13 @@ macro_rules! test_and {
 
 /// Tests that at least one test passes.
 ///
-/// This macro returns a [`Result`] and hints the compiler that the failure
+/// As input this takes two expressions that resolve to the type [`Result`]`<(), `[`TestFailure`]`>`.
+/// This means this type is composable with itself, and all the other `test_*!` macros.
+///
+/// This macro returns a [`Result`]`<(), `[`TestFailure`]`>` and hints the compiler that the failure
 /// case is unlikely to happen.
 ///
-/// A custom message can be added, with [`format!`] support.
+/// A custom message can be added, with [`std::fmt`] support.
 ///
 /// # Examples
 /// ```
@@ -1186,15 +1201,27 @@ macro_rules! test_and {
 #[macro_export]
 macro_rules! test_or {
     ($left:expr, $right:expr $(,)?) => {{
-        match ($left, $right) {
-            (::std::result::Result::Err(first), ::std::result::Result::Err(second)) => ::std::result::Result::Err($crate::TestFailure::two_tests_failed(first, second, ::std::option::Option::None)),
-            _ => ::std::result::Result::Ok(()),
+        // TODO: Replace with if-let chains when stabilized (https://github.com/rust-lang/rust/issues/53667).
+        if let ::std::result::Result::Err(first) = $left {
+            if let ::std::result::Result::Err(second) = $right {
+                ::std::result::Result::Err($crate::TestFailure::two_tests_failed(first, second, ::std::option::Option::None))
+            } else {
+                ::std::result::Result::Ok(())
+            }
+        } else {
+            ::std::result::Result::Ok(())
         }
     }};
     ($left:expr, $right:expr, $($arg:tt)+) => {{
-        match ($left, $right) {
-            (::std::result::Result::Err(first), ::std::result::Result::Err(second)) => ::std::result::Result::Err($crate::TestFailure::two_tests_failed(first, second, ::std::option::Option::Some(::std::format_args!($($arg)+)))),
-            _ => ::std::result::Result::Ok(()),
+        // TODO: Replace with if-let chains when stabilized (https://github.com/rust-lang/rust/issues/53667).
+        if let ::std::result::Result::Err(first) = $left {
+            if let ::std::result::Result::Err(second) = $right {
+                ::std::result::Result::Err($crate::TestFailure::two_tests_failed(first, second, ::std::option::Option::Some(::std::format_args!($($arg)+))))
+            } else {
+                ::std::result::Result::Ok(())
+            }
+        } else {
+            ::std::result::Result::Ok(())
         }
     }};
 }

@@ -1,6 +1,6 @@
 [package]
 name = "test_eq"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Christiaan Biesterbosch <github@kriskras99.nl"]
 edition = "2021"
 rust-version = "1.58.1"
@@ -10,7 +10,6 @@ repository = "https://github.com/kriskras99/test_eq"
 license = "MIT OR Apache-2.0"
 keywords = ["testing", "macro", "test_any", "test_ne"]
 categories = ["development-tools", "parsing", "rust-patterns"]
-
 
 [dependencies]
 
@@ -40,3 +39,7 @@ must_use_candidate = "allow" # not relevant for this
 [lints.rust]
 unsafe_code = "forbid"
 missing_docs = "deny"
+
+[lints.rustdoc]
+missing_crate_level_docs = "deny"
+unescaped_backticks = "warn"
