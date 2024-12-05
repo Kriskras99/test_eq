@@ -32,18 +32,13 @@ macro_rules! test_eq {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val == right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 != b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 != b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 != b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 != b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -59,18 +54,13 @@ macro_rules! test_eq {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val == right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 != b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 != b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 != b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 != b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -86,18 +76,13 @@ macro_rules! test_eq {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val == right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 != b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 != b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 != b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 != b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -113,18 +98,13 @@ macro_rules! test_eq {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val == right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 != b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 != b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 != b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 != b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -140,18 +120,13 @@ macro_rules! test_eq {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val == right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 != b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 != b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 != b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 != b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -167,18 +142,13 @@ macro_rules! test_eq {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val == right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 != b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 != b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 != b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 != b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " != ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -218,18 +188,13 @@ macro_rules! test_ne {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val != right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 == b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 == b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 == b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 == b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -245,18 +210,13 @@ macro_rules! test_ne {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val != right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 == b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 == b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 == b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 == b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -272,18 +232,13 @@ macro_rules! test_ne {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val != right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 == b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 == b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 == b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 == b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -299,18 +254,13 @@ macro_rules! test_ne {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val != right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 == b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 == b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 == b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 == b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -326,18 +276,13 @@ macro_rules! test_ne {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val != right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 == b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 == b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 == b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 == b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -353,18 +298,13 @@ macro_rules! test_ne {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val != right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 == b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 == b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 == b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 == b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " == ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -405,18 +345,13 @@ macro_rules! test_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -432,18 +367,13 @@ macro_rules! test_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -459,18 +389,13 @@ macro_rules! test_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -486,18 +411,13 @@ macro_rules! test_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -513,18 +433,13 @@ macro_rules! test_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -540,18 +455,13 @@ macro_rules! test_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: ![5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: ![5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: !", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -593,18 +503,13 @@ macro_rules! test_not_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if ((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -620,18 +525,13 @@ macro_rules! test_not_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if ((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -647,18 +547,13 @@ macro_rules! test_not_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if ((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -674,18 +569,13 @@ macro_rules! test_not_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if ((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -701,18 +591,13 @@ macro_rules! test_not_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -728,18 +613,13 @@ macro_rules! test_not_any {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !((right_val).contains(left_val)) {
-                    // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
-
-                    // "Test failed: [5, 10, 15].contains(unk1)"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')'
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    } else {
+                        // "Test failed: [5, 10, 15].contains(unk1)"
+                        ::std::concat!("Test failed: ", ::std::stringify!($right), ".contains(", ::std::stringify!($left), ')')
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -779,18 +659,13 @@ macro_rules! test_le {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val <= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 > b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 > b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 > b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 > b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -806,18 +681,13 @@ macro_rules! test_le {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val <= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 > b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 > b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 > b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 > b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -833,18 +703,13 @@ macro_rules! test_le {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val <= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 > b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 > b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 > b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 > b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -860,18 +725,13 @@ macro_rules! test_le {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val <= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 > b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 > b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 > b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 > b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -887,18 +747,13 @@ macro_rules! test_le {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val <= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 > b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 > b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 > b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 > b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -914,18 +769,13 @@ macro_rules! test_le {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val <= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 > b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 > b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 > b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 > b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " > ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -965,18 +815,13 @@ macro_rules! test_ge {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val >= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 < b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 < b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 < b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 < b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -992,18 +837,13 @@ macro_rules! test_ge {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val >= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 < b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 < b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 < b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 < b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -1019,18 +859,13 @@ macro_rules! test_ge {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val >= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 < b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 < b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 < b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 < b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -1046,18 +881,13 @@ macro_rules! test_ge {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val >= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 < b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 < b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 < b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 < b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -1073,18 +903,13 @@ macro_rules! test_ge {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val >= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 < b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 < b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 < b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 < b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a
@@ -1100,18 +925,13 @@ macro_rules! test_ge {
         match (&$left, &$right) {
             (left_val, right_val) => {
                 if !(left_val >= right_val) {
-                    // "[src/main:2:5]: Test failed: a * 2 < b * 5"
-                    #[cfg(feature = "line-info")]
-                    let message = ::std::concat!(
-                        '[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ",
-                        ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
-
-                    // "Test failed: a * 2 < b * 5"
-                    #[cfg(not(feature = "line-info"))]
-                    let message = ::std::concat!(
-                        "Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right)
-                    );
+                    let message = if $crate::__LINE_INFO {
+                        // "[src/main:2:5]: Test failed: a * 2 < b * 5"
+                        ::std::concat!('[', ::std::file!(), ':', ::std::line!(), ':', ::std::column!(), "]: Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    } else {
+                        // "Test failed: a * 2 < b * 5"
+                        ::std::concat!("Test failed: ", ::std::stringify!($left), " < ", ::std::stringify!($right))
+                    };
 
                     // The reborrows below are intentional. Without them, the stack slot for the
                     // borrow is initialized even before the values are compared, leading to a

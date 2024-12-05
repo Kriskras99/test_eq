@@ -4,6 +4,14 @@ use std::fmt::{Debug, Display, Formatter};
 
 mod macros;
 
+/// The line-info feature flag
+///
+/// This is here, because declarative macros can't use feature flags
+/// from their own crate.
+/// So this constant can be used in place of `cfg!(feature = "line-info")`.
+#[doc(hidden)]
+pub const __LINE_INFO: bool = cfg!(feature = "line-info");
+
 /// An error returned when a test in one of the macros fails.
 ///
 /// The error message will display the expected value and the actual value. If the input was not
@@ -119,6 +127,7 @@ impl TestFailure {
     /// Create a failed test from the given `message` and optional `args`.
     #[doc(hidden)]
     #[inline(never)]
+    #[must_use]
     #[cold]
     pub fn test_failed_no_ident<T>(
         message: &'static str,
@@ -138,6 +147,7 @@ impl TestFailure {
     /// Create a failed test from two failed test.
     #[doc(hidden)]
     #[inline(never)]
+    #[must_use]
     #[cold]
     pub fn two_tests_failed(
         first: Self,
@@ -168,6 +178,7 @@ impl TestFailure {
     /// Create a failed test from one failed test.
     #[doc(hidden)]
     #[inline(never)]
+    #[must_use]
     #[cold]
     pub fn one_test_failed(failure: Self, args: Option<std::fmt::Arguments<'_>>) -> Self {
         // offset the error message by 3 spaces for clarity
@@ -265,5 +276,14 @@ mod test {
         let d = "world";
         assert!(test_or!(test_ge!(b, a), test_eq!(c, d)).is_ok());
         assert!(test_or!(test_ge!(a, b), test_eq!(c, d)).is_err());
+    }
+
+    #[test]
+    pub fn test_test_any() {
+        let a = 3;
+        let b = a * 2;
+        assert!(test_any!(a, [1, 3, 5, 7]).is_err());
+        assert!(test_any!(b, [1, 3, 5, 7], "and a is {}", a).is_err());
+        assert!(test_any!(b, [1, 3, 5, 7]).is_err());
     }
 }
